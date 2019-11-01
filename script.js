@@ -48,7 +48,7 @@ function loginProcess () {
     let email = $('#email_login').val()
     let password = $('#password_login').val()
     $.ajax({
-        url : `http://moodvie-server.mardii.site/login`,
+        url : `http://localhost:3000/login`,
         method : 'POST',
         data : {
             email : email,
@@ -78,7 +78,7 @@ function registerProcess () {
     let email = $('#email-register').val()
     let password = $('#password-register').val()
     $.ajax({
-        url : `http://moodvie-server.mardii.site/register`,
+        url : `http://localhost:3000/register`,
         method : 'POST',
         data : {
             email : email,
@@ -92,7 +92,7 @@ function registerProcess () {
             )
         console.log(result)            
         $('#register-page').hide()
-        $('#login').show()
+        $('#login-page').fadeIn()
     }).fail( err => {
         console.log(err)
         Swal.fire({
@@ -110,7 +110,7 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     var id_token = googleUser.getAuthResponse().id_token;
     $.ajax({
-        url : `http://moodvie-server.mardii.site/login-google`,
+        url : `http://localhost:3000/login-google`,
         method : "POST",
         data : {
             google_token : id_token
@@ -156,14 +156,13 @@ function fetchDataFilm (page) {
     console.log("fetch data masuk")
     Swal.fire({
         imageUrl:"https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-18.gif",
-        text:'Calculate your mood...',
-        mageWidth: 200,
+        text:'Search movie based on your mood...',
         imageHeight: 200,
         showConfirmButton: false
     })    
     $.ajax({
         method: 'post',
-        url: 'http://moodvie-server.mardii.site',
+        url: 'http://localhost:3000',
         data:{
             text: $("#sentence-emotion").val(),
             page
@@ -271,10 +270,15 @@ function toDetailPage (title, year, overview, vote_average, vote_count, runtime,
 
 function fetchDetailData (id) {
     console.log(id)
-    Swal.showLoading()
+    Swal.fire({
+        imageUrl:"https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-18.gif",
+        text:'Loading movie data...',
+        imageHeight: 200,
+        showConfirmButton: false
+    })    
     $.ajax({
         method: 'get',
-        url: `http://moodvie-server.mardii.site/${id}`
+        url: `http://localhost:3000/${id}`
     })
     .done(function({detailMovie,youtubeId}){
         console.log(detailMovie, youtubeId)

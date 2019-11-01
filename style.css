@@ -24,10 +24,10 @@
   background: linear-gradient(321deg, #f04141, #f9c032, #68f932, #32baf9, #3248f9, #f04141, #f9c032, #68f932, #f832f9, #f9329a, #f93232);
   background-size: 1600% 1600%;
 
-  -webkit-animation: AnimationName 20s ease infinite;
-  -moz-animation: AnimationName 20s ease infinite;
-  -o-animation: AnimationName 20s ease infinite;
-  animation: AnimationName 20s ease infinite;
+  -webkit-animation: AnimationName 25s ease infinite;
+  -moz-animation: AnimationName 25s ease infinite;
+  -o-animation: AnimationName 25s ease infinite;
+  animation: AnimationName 25s ease infinite;
 
   
 
@@ -36,7 +36,7 @@
   background-size: cover; */
 }
 
-/* @-webkit-keyframes AnimationName {
+@-webkit-keyframes AnimationName {
   0%{background-position:0% 97%}
   50%{background-position:100% 4%}
   100%{background-position:0% 97%}
@@ -55,7 +55,7 @@
   0%{background-position:0% 97%}
   50%{background-position:100% 4%}
   100%{background-position:0% 97%}
-} */
+}
 
 
 .loginBox{
