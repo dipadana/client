@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/1.0.2/css/froala_blocks.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>Moodvie</title>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div id="login-page">
+    <div class="container fdb-block" style="background-color:transparent;">
+      <div class=" row justify-content-end">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 text-left">
+          <div class="fdb-box loginBox">
+            <div class="row">
+              <div class="col">
+                <h1>Login Moodvie</h1>
+                <p class="lead">Right at the coast of the Semantics, a large language ocean. A small river named Duden.</p>
+              </div>
+            </div>
+            <form>
+              <div class="row">
+                <div class="col mt-4">
+                  <input type="email" required class="form-control" placeholder="Email">
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <input type="password" required class="form-control" placeholder="Password">
+                  <small id="emailHelp" class="form-text text-muted mt-3">Don't have account? <span style="cursor: pointer;" class="text-primary">Register here.</span> </small>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <button type="submit" class="btn btn-secondary" type="button">Login</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Page -->
+  <div style="display: none;" id="register-page">
+    <div class="container fdb-block" style="background-color:transparent;">
+      <div class=" row justify-content-end">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 text-left">
+          <div class="fdb-box loginBox">
+            <div class="row">
+              <div class="col">
+                <h1>Register Moodvie</h1>
+                <p class="lead">Right at the coast of the Semantics, a large language ocean. A small river named Duden.</p>
+              </div>
+            </div>
+            <form>
+              <div class="row">
+                <div class="col mt-4">
+                  <input type="email" required class="form-control" placeholder="Email">
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <input type="password" required class="form-control" placeholder="Password">
+                  <small id="emailHelp" class="form-text text-muted mt-3">Have account? <span style="cursor: pointer;" class="text-primary">Login here.</span> </small>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <button type="submit" class="btn btn-secondary" type="button">Register</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav style="display: none;" class="navbar bg-light navbar-expand-lg sticky-top">
+    <a class="navbar-brand">
+      <p class="nav-title mb-0 text-primary">Moodvie</p>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav5" aria-controls="navbarNav5" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">☰</span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav5">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-primary">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link text-muted">v.1.0</a>
+          </li>
+      </ul>
+
+      
+
+      <a class="btn btn-danger ml-md-3" href="https://www.froala.com">Logout</a>
+    </div>
+  </nav>
+  
+  <!-- HomePage -->
+  <section style="display:none;" id="home-page">
+    <div class="fdb-block container-fluid" style="background-color:transparent;">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7 col-xl-5 text-center">
+          <div class="fdb-box box-margin-top-sentence">
+            <div class="row">
+              <div class="col">
+                <h2>Please write something...</h2>
+                <small>We will determine your mood based on the sentence you write, and will recommend an appropriate movie based on your current mood ...</small>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Sentence here">
+              </div>
+            </div>
+            
+            <div class="row mt-4">
+              <div class="col">
+                <button class="btn btn-outline-secondary" type="button">Search Movie</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- List Page -->
+  <section style="display: none;" class="">
+    <div class="fdb-block container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 text-center">
+          <div id="mood-result">
+            <h1>Your mood right now is Sad</h1>
+            <p style="font-size:20px;" class="text-primary">The film that might suit you is</p>
+          </div>
+          <div class="row text-center justify-content-center mt-5">
+
+            <div class="col-10 col-sm-3 mb-4">
+              <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
+              <h3><strong>Feature One</strong></h3>
+            </div>
+
+            <div class="col-10 col-sm-3 mb-4">
+              <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
+              <h3><strong>Feature Two</strong></h3>
+            </div>
+      
+            <div class="col-10 col-sm-3 mb-4">
+              <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
+              <h3><strong>Feature Three</strong></h3>
+            </div>
+      
+            <div class="col-10 col-sm-3 mb-4">
+              <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
+              <h3><strong>Feature Four</strong></h3>
+            </div>
+
+            <div class="col-10 col-sm-3 mb-4">
+                <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
+                <h3><strong>Feature One</strong></h3>
+              </div>
+  
+              <div class="col-10 col-sm-3 mb-4">
+                <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
+                <h3><strong>Feature Two</strong></h3>
+              </div>
+        
+              <div class="col-10 col-sm-3 mb-4">
+                <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
+                <h3><strong>Feature Three</strong></h3>
+              </div>
+        
+              <div class="col-10 col-sm-3 mb-4">
+                <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
+                <h3><strong>Feature Four</strong></h3>
+              </div>
+
+              <div class="col-10 col-sm-3 mb-4">
+                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
+                  <h3><strong>Feature One</strong></h3>
+                </div>
+    
+                <div class="col-10 col-sm-3 mb-4">
+                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
+                  <h3><strong>Feature Two</strong></h3>
+                </div>
+          
+                <div class="col-10 col-sm-3 mb-4">
+                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
+                  <h3><strong>Feature Three</strong></h3>
+                </div>
+          
+                <div class="col-10 col-sm-3 mb-4">
+                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
+                  <h3><strong>Feature Four</strong></h3>
+                </div>  
+
+                <div class="col-10 col-sm-3 mb-4">
+                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
+                    <h3><strong>Feature One</strong></h3>
+                  </div>
+      
+                  <div class="col-10 col-sm-3 mb-4">
+                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
+                    <h3><strong>Feature Two</strong></h3>
+                  </div>
+            
+                  <div class="col-10 col-sm-3 mb-4">
+                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
+                    <h3><strong>Feature Three</strong></h3>
+                  </div>
+            
+                  <div class="col-10 col-sm-3 mb-4">
+                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
+                    <h3><strong>Feature Four</strong></h3>
+                  </div>
+
+          
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail Page -->
+  <section style="display: none;" class="fdb-block pt-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col text-left">
+          <h1>Tintin and the Mystery of the Golden Fleece ( <span>1997</span> )</h1>
+          <p class="lead">
+              Tintin and Captain Haddock try to discover what is so desirable about their old and apparently worthless ship.          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center mb-5">
+        <div class="col-10">
+            <div class="embed-responsive embed-responsive-16by9">
+          <iframe  class="img-fluid mt-5" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+          </iframe>
+        </div>
+      </div>
+      </div>
+  
+      <div class="row text-left pt-5">
+
+        <div class="col-12 col-md-4">
+            <div class="row">
+                <div class="col-3">
+    
+                  <img alt="image" class="img-fluid" src="https://image.flaticon.com/icons/svg/616/616490.svg">
+                </div>
+                <div class="col-9">
+                  <h3><strong>Rating <span>6.3</span> </strong></h3>
+                  <p>Vote Count: <span> 33 </span> </p>
+                </div>
+              </div>
+          
+        </div>
+  
+        <div class="col-12 col-md-4 pt-4 pt-md-0">
+          <div class="row">
+            <div class="col-3">
+              <img alt="image" class="img-fluid" src="https://image.flaticon.com/icons/svg/2184/2184561.svg">
+            </div>
+            <div class="col-9">
+              <h3><strong>Genre</strong></h3>
+              <p>Adventure, Drama</p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12 col-md-4 pt-4 pt-md-0">
+            <div class="row">
+                <div class="col-3">
+                  <img alt="image" class="img-fluid" src="./imgs/icons/github.svg">
+                </div>
+                <div class="col-9">
+                  <h3><strong>Runtime</strong></h3>
+                  <p>This movie is 11 Minutes long</p>
+                </div>
+              </div>
+
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
