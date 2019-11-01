@@ -35,13 +35,13 @@ function checkToken () {
 }
 
 function goToLoginPage () {
-    $('#login-page').show()
     $('#register-page').hide()
+    $('#login-page').fadeIn()
 }
 
 function goToRegisterPage () {
     $('#login-page').hide()
-    $('#register-page').show()
+    $('#register-page').fadeIn()
 }
 
 function loginProcess () {
@@ -132,7 +132,7 @@ function signOut() {
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
-    $('#login-page').show()
+    $('#login-page').fadeIn()
     $('#home-page').hide()
     $("#nav-bar").hide()
     $("#register-page").hide()
@@ -144,17 +144,23 @@ function signOut() {
 
 function renderHomePage () {
     $("#sentence-emotion").val('')
-    $("#nav-bar").show()
+    $("#nav-bar").fadeIn('slow')
+    $("#home-page").fadeIn('slow')
     $("#login-page").hide()
     $("#register-page").hide()
     $("#detail-page").hide()
     $("#list-movie-page").hide()
-    $("#home-page").show()
 }
 
 function fetchDataFilm (page) {
     console.log("fetch data masuk")
-    Swal.showLoading()
+    Swal.fire({
+        imageUrl:"https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-18.gif",
+        text:'Calculate your mood...',
+        mageWidth: 200,
+        imageHeight: 200,
+        showConfirmButton: false
+    })    
     $.ajax({
         method: 'post',
         url: 'http://localhost:3000',
@@ -180,22 +186,20 @@ function fetchDataFilm (page) {
 }
 
 function renderListPage (mood_status) {
-    console.log(mood_status, "from render list page")
-
     $('#mood_status').empty().append(`${mood_status}`)
-    $("#list-movie-page").show()
+    $("#list-movie-page").fadeIn('slow')
     $("#home-page").hide()
     $("#detail-page").hide()
 }
 
 function backToListPage () {
     $("#detail-page").hide()
-    $("#list-movie-page").show()
+    $("#list-movie-page").fadeIn()
 }
 
 function renderListMovie (id,title, img_url) {
     $("#list-movie").append(`
-    <div onclick="fetchDetailData(${id})" class="col-10 col-sm-3 mb-4">
+    <div onclick="fetchDetailData(${id})" style="cursor:pointer;" class="col-10 col-sm-3 mb-4">
         <img alt="image" class="img-fluid rounded" src="${ img_url ? "http://image.tmdb.org/t/p/w185/"+img_url : "./imgs/hero/blue.svg" }">
         <h3><strong>${title}</strong></h3>
     </div>
@@ -249,7 +253,7 @@ function toDetailPage (title, year, overview, vote_average, vote_count, runtime,
         <div class="col-12 col-md-4 pt-4 pt-md-0">
         <div class="row">
             <div class="col-3">
-            <img alt="image" class="img-fluid" src="./imgs/icons/github.svg">
+            <img alt="image" class="img-fluid" src="https://image.flaticon.com/icons/svg/148/148934.svg">
             </div>
             <div class="col-9">
             <h3><strong>Runtime</strong></h3>
@@ -257,7 +261,7 @@ function toDetailPage (title, year, overview, vote_average, vote_count, runtime,
             </div>
         </div>
         </div>
-        <a class="btn btn-danger ml-md-3 mt-5 text-light" onclick="backToListPage()">Back</a>    
+        <a style="cursor:pointer;" class="btn btn-danger ml-md-3 mt-5 text-light" onclick="backToListPage()">Back</a>    
     </div>
     `)
     $("#detail-page").show()
