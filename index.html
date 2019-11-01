@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/1.0.2/css/froala_blocks.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <meta name="google-signin-client_id" content="628697528399-tm5hqkb025uttnahfoj889flu2jg3hvm.apps.googleusercontent.com">
   <link rel="stylesheet" href="./style.css">
   <title>Moodvie</title>
 </head>
@@ -24,21 +26,22 @@
                 <p class="lead">Right at the coast of the Semantics, a large language ocean. A small river named Duden.</p>
               </div>
             </div>
-            <form>
+            <form id="login-form">
               <div class="row">
                 <div class="col mt-4">
-                  <input type="email" required class="form-control" placeholder="Email">
+                  <input type="email" id="email_login" required class="form-control" placeholder="Email">
                 </div>
               </div>
               <div class="row mt-4">
                 <div class="col">
-                  <input type="password" required class="form-control" placeholder="Password">
-                  <small id="emailHelp" class="form-text text-muted mt-3">Don't have account? <span style="cursor: pointer;" class="text-primary">Register here.</span> </small>
+                  <input type="password" id="password_login" required class="form-control" placeholder="Password">
+                  <small class="form-text text-muted mt-3">Don't have account? <span id="go-register"  style="cursor: pointer;" class="text-primary">Register here.</span> </small>
                 </div>
               </div>
               <div class="row mt-4">
                 <div class="col">
                   <button type="submit" class="btn btn-secondary" type="button">Login</button>
+                  <button class="g-signin2" data-onsuccess="onSignIn"></button>
                 </div>
               </div>
             </form>
@@ -49,7 +52,7 @@
   </div>
 
   <!-- Register Page -->
-  <div style="display: none;" id="register-page">
+  <div  id="register-page" style="display: none;">
     <div class="container fdb-block" style="background-color:transparent;">
       <div class=" row justify-content-end">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5 text-left">
@@ -60,16 +63,16 @@
                 <p class="lead">Right at the coast of the Semantics, a large language ocean. A small river named Duden.</p>
               </div>
             </div>
-            <form>
+            <form id="register-form">
               <div class="row">
                 <div class="col mt-4">
-                  <input type="email" required class="form-control" placeholder="Email">
+                  <input id="email-register" type="email" required class="form-control" placeholder="Email">
                 </div>
               </div>
               <div class="row mt-4">
                 <div class="col">
-                  <input type="password" required class="form-control" placeholder="Password">
-                  <small id="emailHelp" class="form-text text-muted mt-3">Have account? <span style="cursor: pointer;" class="text-primary">Login here.</span> </small>
+                  <input id="password-register" type="password" required class="form-control" placeholder="Password">
+                  <small class="form-text text-muted mt-3">Have account? <span id="go-login" style="cursor: pointer;" class="text-primary">Login here.</span> </small>
                 </div>
               </div>
               <div class="row mt-4">
@@ -85,9 +88,9 @@
   </div>
 
   <!-- Nav -->
-  <nav style="display: none;" class="navbar bg-light navbar-expand-lg sticky-top">
+  <nav id="nav-bar" style="display: none;" class="navbar bg-light navbar-expand-lg sticky-top">
     <a class="navbar-brand">
-      <p class="nav-title mb-0 text-primary">Moodvie</p>
+      <p class="nav-title mb-0 text-primary" style="cursor: pointer;" onclick="renderHomePage()">Moodvie</p>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav5" aria-controls="navbarNav5" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,16 +100,14 @@
     <div class="collapse navbar-collapse" id="navbarNav5">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link text-primary">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link text-primary" style="cursor: pointer;" onclick="renderHomePage()">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
             <a class="nav-link text-muted">v.1.0</a>
           </li>
       </ul>
 
-      
-
-      <a class="btn btn-danger ml-md-3" href="https://www.froala.com">Logout</a>
+      <a class="btn btn-danger ml-md-3 text-light" style="cursor: pointer;" onclick="signOut()">Logout</a>
     </div>
   </nav>
   
@@ -122,17 +123,19 @@
                 <small>We will determine your mood based on the sentence you write, and will recommend an appropriate movie based on your current mood ...</small>
               </div>
             </div>
+            <form id="form-fetch-data">
             <div class="row mt-4">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Sentence here">
+                <input required type="text" id="sentence-emotion" class="form-control" placeholder="Sentence here">
               </div>
             </div>
             
             <div class="row mt-4">
               <div class="col">
-                <button class="btn btn-outline-secondary" type="button">Search Movie</button>
+                <button class="btn btn-outline-secondary" type="submit">Search Movie</button>
               </div>
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -140,171 +143,44 @@
   </section>
 
   <!-- List Page -->
-  <section style="display: none;" class="">
+  <section id="list-movie-page" style="display: none;" class="">
     <div class="fdb-block container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 text-center">
           <div id="mood-result">
-            <h1>Your mood right now is Sad</h1>
-            <p style="font-size:20px;" class="text-primary">The film that might suit you is</p>
+            <h1>Your mood right now is <u><span id="mood_status"></span></u> </h1>
+            <p style="font-size:20px;" class="text-primary">You may wanna watch one of these...</p>
           </div>
-          <div class="row text-center justify-content-center mt-5">
+          <div id="list-movie" class="row text-center justify-content-center mt-5">
 
-            <div class="col-10 col-sm-3 mb-4">
-              <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
-              <h3><strong>Feature One</strong></h3>
-            </div>
-
-            <div class="col-10 col-sm-3 mb-4">
-              <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
-              <h3><strong>Feature Two</strong></h3>
-            </div>
-      
-            <div class="col-10 col-sm-3 mb-4">
-              <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
-              <h3><strong>Feature Three</strong></h3>
-            </div>
-      
-            <div class="col-10 col-sm-3 mb-4">
-              <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
-              <h3><strong>Feature Four</strong></h3>
-            </div>
-
-            <div class="col-10 col-sm-3 mb-4">
-                <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
-                <h3><strong>Feature One</strong></h3>
-              </div>
-  
-              <div class="col-10 col-sm-3 mb-4">
-                <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
-                <h3><strong>Feature Two</strong></h3>
-              </div>
-        
-              <div class="col-10 col-sm-3 mb-4">
-                <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
-                <h3><strong>Feature Three</strong></h3>
-              </div>
-        
-              <div class="col-10 col-sm-3 mb-4">
-                <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
-                <h3><strong>Feature Four</strong></h3>
-              </div>
-
-              <div class="col-10 col-sm-3 mb-4">
-                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
-                  <h3><strong>Feature One</strong></h3>
-                </div>
-    
-                <div class="col-10 col-sm-3 mb-4">
-                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
-                  <h3><strong>Feature Two</strong></h3>
-                </div>
-          
-                <div class="col-10 col-sm-3 mb-4">
-                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
-                  <h3><strong>Feature Three</strong></h3>
-                </div>
-          
-                <div class="col-10 col-sm-3 mb-4">
-                  <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
-                  <h3><strong>Feature Four</strong></h3>
-                </div>  
-
-                <div class="col-10 col-sm-3 mb-4">
-                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/blue.svg">
-                    <h3><strong>Feature One</strong></h3>
-                  </div>
-      
-                  <div class="col-10 col-sm-3 mb-4">
-                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/red.svg">
-                    <h3><strong>Feature Two</strong></h3>
-                  </div>
-            
-                  <div class="col-10 col-sm-3 mb-4">
-                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/purple.svg">
-                    <h3><strong>Feature Three</strong></h3>
-                  </div>
-            
-                  <div class="col-10 col-sm-3 mb-4">
-                    <img alt="image" class="img-fluid rounded" src="./imgs/hero/yellow.svg">
-                    <h3><strong>Feature Four</strong></h3>
-                  </div>
-
-          
-            
           </div>
+
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-4">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" onclick="fetchDataFilm(1)">1</a></li>
+                <li class="page-item"><a class="page-link" onclick="fetchDataFilm(2)">2</a></li>
+                <li class="page-item"><a class="page-link" onclick="fetchDataFilm(3)">3</a></li>
+                <li class="page-item"><a class="page-link" onclick="fetchDataFilm(4)">4</a></li>
+                <li class="page-item"><a class="page-link" onclick="fetchDataFilm(5)">5</a></li>
+              </ul>
+            </nav>
+
         </div>
       </div>
     </div>
   </section>
 
   <!-- Detail Page -->
-  <section style="display: none;" class="fdb-block pt-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col text-left">
-          <h1>Tintin and the Mystery of the Golden Fleece ( <span>1997</span> )</h1>
-          <p class="lead">
-              Tintin and Captain Haddock try to discover what is so desirable about their old and apparently worthless ship.          </p>
-        </div>
-      </div>
-      <div class="row justify-content-center mb-5">
-        <div class="col-10">
-            <div class="embed-responsive embed-responsive-16by9">
-          <iframe  class="img-fluid mt-5" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-          </iframe>
-        </div>
-      </div>
-      </div>
-  
-      <div class="row text-left pt-5">
-
-        <div class="col-12 col-md-4">
-            <div class="row">
-                <div class="col-3">
-    
-                  <img alt="image" class="img-fluid" src="https://image.flaticon.com/icons/svg/616/616490.svg">
-                </div>
-                <div class="col-9">
-                  <h3><strong>Rating <span>6.3</span> </strong></h3>
-                  <p>Vote Count: <span> 33 </span> </p>
-                </div>
-              </div>
-          
-        </div>
-  
-        <div class="col-12 col-md-4 pt-4 pt-md-0">
-          <div class="row">
-            <div class="col-3">
-              <img alt="image" class="img-fluid" src="https://image.flaticon.com/icons/svg/2184/2184561.svg">
-            </div>
-            <div class="col-9">
-              <h3><strong>Genre</strong></h3>
-              <p>Adventure, Drama</p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-12 col-md-4 pt-4 pt-md-0">
-            <div class="row">
-                <div class="col-3">
-                  <img alt="image" class="img-fluid" src="./imgs/icons/github.svg">
-                </div>
-                <div class="col-9">
-                  <h3><strong>Runtime</strong></h3>
-                  <p>This movie is 11 Minutes long</p>
-                </div>
-              </div>
-
-        </div>
-        
-      </div>
-      
+  <section id="detail-page" style="display: none;" class="fdb-block pt-5">
+    <div id="detail-data" class="container">
     </div>
   </section>
   
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
 </body>
 </html>
