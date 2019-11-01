@@ -48,7 +48,7 @@ function loginProcess () {
     let email = $('#email_login').val()
     let password = $('#password_login').val()
     $.ajax({
-        url : `http://localhost:3000/login`,
+        url : `http://moodvie-server.mardii.site/login`,
         method : 'POST',
         data : {
             email : email,
@@ -78,7 +78,7 @@ function registerProcess () {
     let email = $('#email-register').val()
     let password = $('#password-register').val()
     $.ajax({
-        url : `http://localhost:3000/register`,
+        url : `http://moodvie-server.mardii.site/register`,
         method : 'POST',
         data : {
             email : email,
@@ -110,7 +110,7 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     var id_token = googleUser.getAuthResponse().id_token;
     $.ajax({
-        url : `http://localhost:3000/login-google`,
+        url : `http://moodvie-server.mardii.site/login-google`,
         method : "POST",
         data : {
             google_token : id_token
@@ -163,7 +163,7 @@ function fetchDataFilm (page) {
     })    
     $.ajax({
         method: 'post',
-        url: 'http://localhost:3000',
+        url: 'http://moodvie-server.mardii.site',
         data:{
             text: $("#sentence-emotion").val(),
             page
@@ -274,7 +274,7 @@ function fetchDetailData (id) {
     Swal.showLoading()
     $.ajax({
         method: 'get',
-        url: `http://localhost:3000/${id}`
+        url: `http://moodvie-server.mardii.site/${id}`
     })
     .done(function({detailMovie,youtubeId}){
         console.log(detailMovie, youtubeId)

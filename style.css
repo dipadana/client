@@ -36,7 +36,7 @@
   background-size: cover; */
 }
 
-@-webkit-keyframes AnimationName {
+/* @-webkit-keyframes AnimationName {
   0%{background-position:0% 97%}
   50%{background-position:100% 4%}
   100%{background-position:0% 97%}
@@ -55,7 +55,7 @@
   0%{background-position:0% 97%}
   50%{background-position:100% 4%}
   100%{background-position:0% 97%}
-}
+} */
 
 
 .loginBox{
